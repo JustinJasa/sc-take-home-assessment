@@ -1,13 +1,5 @@
-package folders
-
-import (
-	"fmt"
-
-	"github.com/gofrs/uuid"
-)
-
 /**
-Componnent 1:
+Component 1:
 - What does this code do?
 
 the code in this file is retrieving folders from a given organisation.
@@ -24,6 +16,14 @@ The FetchAllFoldersByOrgID function takes an orgID and returns a slice of folder
 3. Error handling
 	- The error returned by FetchAllFoldersByOrgID is not handled, this can be checked and handled appropriately.
 **/
+
+package folders
+
+import (
+	"fmt"
+
+	"github.com/gofrs/uuid"
+)
 
 // revised functions
 
