@@ -1,27 +1,41 @@
 package folders
 
 import (
+	"fmt"
+
 	"github.com/gofrs/uuid"
 )
 
+/**
+Componnent 1:
+- What does this code do?
+
+the code in this file is retrieving folders from a given organisation.
+the GetAllFolders function takes a FetchFolderRequest and returns a FetchFolderResponse.
+it uses FetchAllFoldersByOrgID to retrieve the folders, then processes data to return it in the expected format
+
+The FetchAllFoldersByOrgID function takes an orgID and returns a slice of folders based on the provided organisationID.
+
+- What improvements can be made to the code?
+
+1. Remove unused variables
+2. Unnecessary type conversions
+	- code converts folders from []*Folder to []Folder and back to []*Folder.
+3. Error handling
+	- The error returned by FetchAllFoldersByOrgID is not handled, this can be checked and handled appropriately.
+**/
+
+// revised functions
+
 func GetAllFolders(req *FetchFolderRequest) (*FetchFolderResponse, error) {
-	var (
-		err error
-		f1  Folder
-		fs  []*Folder
-	)
-	f := []Folder{}
-	r, _ := FetchAllFoldersByOrgID(req.OrgID)
-	for k, v := range r {
-		f = append(f, *v)
+
+	folders, err := FetchAllFoldersByOrgID(req.OrgID)
+
+	if err != nil {
+		return nil, fmt.Errorf("failed to fetch folders: %w", err)
 	}
-	var fp []*Folder
-	for k1, v1 := range f {
-		fp = append(fp, &v1)
-	}
-	var ffr *FetchFolderResponse
-	ffr = &FetchFolderResponse{Folders: fp}
-	return ffr, nil
+
+	return &FetchFolderResponse{Folders: folders}, nil
 }
 
 func FetchAllFoldersByOrgID(orgID uuid.UUID) ([]*Folder, error) {
