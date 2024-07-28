@@ -1,6 +1,13 @@
 # sc-grad-2025
 
-The technical take home for SC graduate program of 2025.
+Hey SC Team, 
+
+Im Justin and here is my solution to the take home assessment.
+
+Please view the comments on top of files for the explanation.
+
+Kind regards, 
+Justin Jasa
 
 ## Getting started
 
